@@ -1,6 +1,6 @@
 # SIGPLAC-API
 
-Sistema de Microserviços Sigplac compostos por bibliotecas wheel baseadas em FastAPI + Serviço com contêinerização docker para implementação em produção. 
+Sistema de Microserviços Sigplac compostos por bibliotecas wheel com contêinerização docker para implementação em produção. 
 
 ## SIGPLAC-OCR
 
