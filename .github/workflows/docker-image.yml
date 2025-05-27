@@ -16,5 +16,4 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build -t sigplac-api .
-          docker run -d --name sigplac-api -p 8000:8000 -e SIGPLAC_API4AI_KEY="sua_chave_aqui" sigplac-api
       
