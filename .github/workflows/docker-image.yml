@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI/CD
 
 on:
   push:
@@ -7,13 +7,29 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
+    
+    - name: Build Docker image
       run: docker build -t sigplac-api .
-      
+    
+    - name: Run container in background
+      run: |
+        docker run -d --name sigplac-api -p 8000:8000 \
+        -e SIGPLAC_API4AI_KEY="dummy_key_for_testing" \
+        sigplac-api
+        sleep 10  # Espera o servidor iniciar
+        
+    - name: Test API health
+      run: |
+        curl -sSf http://localhost:8000/docs > /dev/null
+        echo "Health check passed!"
+        
+    - name: Cleanup
+      if: always()
+      run: |
+        docker stop sigplac-api || true
+        docker rm sigplac-api || true
