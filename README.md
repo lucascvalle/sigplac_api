@@ -1,6 +1,6 @@
 # SIGPLAC-OCR API
 
-API de OCR com suporte para dois métodos de processamento: **API4AI** (serviço premium) e **Tesseract** (solução básica em inglês).  
+API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço de OCR Alto Detalhe) e **Tesseract** (OCR de Documentos).  
 *Desenvolvido em FastAPI e empacotado para implantação via Docker.*
 
 ---
@@ -29,6 +29,7 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (serviço
    ```bash
    docker run -d --name sigplac-api -p 8000:8000 -e SIGPLAC_API4AI_KEY="sua_chave_aqui" sigplac-api
     ```
+   * Nota: Caso não possua uma chave e queira iniciar o contêiner, passe um valor genérico e utilize apenas o serviço do tesseract
 ### Endpoints
 
 ## API4AI
