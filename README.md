@@ -82,6 +82,12 @@ texto = response['results'][0]['entities'][0]['objects'][0]['entities'][0]['text
    ```bash
   curl -X POST "http://localhost:8000/tesseract/ocr?image_url=https://exemplo.com/imagem.png"
   ```
+# 🔍 Estrutura de Resposta (TESSERACT)
 
-
+A resposta inclui metadados completos e texto estruturado:
+```json
+{
+            "text": "Hello World"
+        }
+```
 
