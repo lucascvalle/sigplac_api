@@ -1,11 +1,15 @@
-# SIGPLAC-OCR API
+# SIGPLAC-API
+
+Sistema de Microserviços Sigplac compostos por bibliotecas wheel baseadas em FastAPI + Serviço com contêinerização docker para implementação em produção. 
+
+## SIGPLAC-OCR
 
 API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço de OCR Alto Detalhe) e **Tesseract** (OCR de Documentos).  
 *Desenvolvido em FastAPI e empacotado para implantação via Docker.*
 
 ---
 
-## 📦 Recursos
+### 📦 Recursos
 - **API4AI OCR**: Integração com serviço premium para OCR avançado.
 - **Tesseract OCR**: Extração básica de texto em inglês.
 - Configuração simplificada via variáveis de ambiente.
@@ -13,13 +17,13 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço
 
 ---
 
-## 🚀 Instalação
+#### 🚀 Instalação
 
-### Pré-requisitos
+##### Pré-requisitos
 - Docker instalado
 - Chave da API4AI (para o endpoint `/api4ai/ocr`)
 
-### Passo a Passo
+#### Passo a Passo
 1. Construa a imagem Docker:
    ```bash
    docker build -t sigplac-api .
@@ -30,9 +34,9 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço
    docker run -d --name sigplac-api -p 8000:8000 -e SIGPLAC_API4AI_KEY="sua_chave_aqui" sigplac-api
     ```
    * Nota: Caso não possua uma chave e queira iniciar o contêiner, passe um valor genérico e utilize apenas o serviço do tesseract
-### Endpoints
+#### Endpoints
 
-## API4AI
+##### API4AI
 
 * Parâmetro: image_url (URL pública da imagem)
 
@@ -41,7 +45,7 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço
   curl -X POST "http://localhost:8000/api4ai/ocr?image_url=https://exemplo.com/imagem.png"
   ```
 
-# 🔍 Estrutura de Resposta (API4AI)
+####### 🔍 Estrutura de Resposta (API4AI)
 
 A resposta inclui metadados completos e texto estruturado:
 ```json
@@ -69,13 +73,13 @@ A resposta inclui metadados completos e texto estruturado:
 }
 ```
 
-# Extraindo apenas o texto formatado:
+####### Extraindo apenas o texto formatado:
 ```python
 texto = response['results'][0]['entities'][0]['objects'][0]['entities'][0]['text']
 ```
 
 
-## Tesseract
+###### Tesseract
 
 * Parâmetro: image_url (URL pública da imagem)
 
@@ -83,7 +87,7 @@ texto = response['results'][0]['entities'][0]['objects'][0]['entities'][0]['text
    ```bash
   curl -X POST "http://localhost:8000/tesseract/ocr?image_url=https://exemplo.com/imagem.png"
   ```
-# 🔍 Estrutura de Resposta (TESSERACT)
+####### 🔍 Estrutura de Resposta (TESSERACT)
 
 A resposta inclui metadados completos e texto estruturado:
 ```json
