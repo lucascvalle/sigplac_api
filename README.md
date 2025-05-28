@@ -17,13 +17,13 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço
 
 ---
 
-## 🚀 Instalação
+### 🚀 Instalação
 
-### Pré-requisitos
+#### Pré-requisitos
 - Docker instalado
 - Chave da API4AI (para o endpoint `/api4ai/ocr`)
 
-### Passo a Passo
+#### Passo a Passo
 1. Construa a imagem Docker:
    ```bash
    docker build -t sigplac-api .
