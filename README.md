@@ -102,6 +102,7 @@ A resposta inclui metadados completos e texto estruturado:
 
 API de validação para análise de texto obtído através de OCR de placas veículares prontas para descarte.
 
+* Nota: Este serviço utiliza a API API4AI para realizar o OCR, sendo assim uma chave é necessária. 
 ---
 
 ### Atualizações: 
