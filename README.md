@@ -125,8 +125,10 @@ API de validação para análise de texto obtído através de OCR de placas veí
 
 #### Validador de Placa Cortada
 
-* Parâmetro: {"token": "ABC1C34", "image_url": "https://exemplo.com/placa_mercosul.jpg"}
-
+* Parâmetro:
+```bash
+  {"token": "ABC1C34", "image_url": "https://exemplo.com/placa_mercosul.jpg"}
+```
 ###### 🔍 Estrutura de Resposta 
 
 * Placa Cortada:
