@@ -126,8 +126,15 @@ API de validação para análise de texto obtído através de OCR de placas veí
 #### Validador de Placa Cortada
 
 * Parâmetro:
+  
+* Exemplo:
 ```bash
-  {"token": "ABC1C34", "image_url": "https://exemplo.com/placa_mercosul.jpg"}
+  curl -X POST "http://localhost:5000/validate/placa_descartada" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "CBA0K41",
+    "image_url": "https://exemplo.com/placa_mercosul.jpg"
+  }'
 ```
 ###### 🔍 Estrutura de Resposta 
 
