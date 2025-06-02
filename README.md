@@ -95,8 +95,6 @@ texto = response['results'][0]['entities'][0]['objects'][0]['entities'][0]['text
 A resposta inclui metadados completos e texto estruturado:
 ```json
 {
-
-
   "text": "Hello World"
 }
 ```
