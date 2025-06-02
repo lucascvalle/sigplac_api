@@ -48,7 +48,7 @@ API de OCR com suporte para dois métodos de processamento: **API4AI** (Serviço
   curl -X POST "http://localhost:8000/api4ai/ocr?image_url=https://exemplo.com/imagem.png"
   ```
 
-###### 🔍 Estrutura de Resposta (API4AI)
+##### 🔍 Estrutura de Resposta (API4AI)
 
 A resposta inclui metadados completos e texto estruturado:
 ```json
@@ -135,7 +135,7 @@ API de validação para análise de texto obtído através de OCR de placas veí
     "image_url": "https://exemplo.com/placa_mercosul.jpg"
   }'
 ```
-###### 🔍 Estrutura de Resposta 
+##### 🔍 Estrutura de Resposta 
 
 * Placa Cortada:
 ```json
@@ -155,6 +155,12 @@ API de validação para análise de texto obtído através de OCR de placas veí
   "tipo_placa": "MERCOSUL"
 }
 ```
+###### - Códigos Esperados
+| Código | Status              | Descrição                          |
+|--------|---------------------|------------------------------------|
+| 200    | OK                  | Validação realizada com sucesso    |
+| 400    | Bad Request         | Dados de entrada inválidos         |
+| 500    | Internal Error      | Erro no servidor                   |
 
 ## Suporte
 Para problemas ou dúvidas, abra uma issue no GitHub.
