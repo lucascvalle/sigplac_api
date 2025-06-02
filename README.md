@@ -155,7 +155,7 @@ API de validação para análise de texto obtído através de OCR de placas veí
   "tipo_placa": "MERCOSUL"
 }
 ```
-###### - Códigos Esperados
+###### Códigos Esperados
 | Código | Status              | Descrição                          |
 |--------|---------------------|------------------------------------|
 | 200    | OK                  | Validação realizada com sucesso    |
