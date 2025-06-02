@@ -1,28 +1,33 @@
-# Estágio final otimizado
 FROM python:3.10-slim-bookworm
 
-# Instalação mínima de dependências
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     tesseract-ocr \
     tesseract-ocr-eng \
+    tesseract-ocr-por \
     libglib2.0-0 \
     libsm6 \
     libxext6 \
     libxrender1 \
-    libgl1 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    libgl1 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-
-# Diretório de trabalho
 WORKDIR /app
 
-# Copia e instala o pacote .whl da API
+# Copiar ambas as wheels
 COPY sigplac_ocr-*.whl .
-RUN pip install --no-cache-dir --timeout 300 sigplac_ocr-*.whl
+COPY sigplac_validate-*.whl .
 
-# Expõe a porta usada pelo FastAPI
-EXPOSE 8000
+# Instalar as bibliotecas
+RUN pip install --no-cache-dir --timeout 300 sigplac_ocr-*.whl sigplac_validate-*.whl
 
-# Comando padrão para rodar a API
-CMD ["uvicorn", "sigplac_ocr.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8000 5000
+
+# Variáveis de ambiente
+ENV OCR_SERVICE_URL=http://localhost:8000
+ENV APP_PORT=5000
+ENV APP_HOST=0.0.0.0
+ENV PYTHONUNBUFFERED=1
+
+# Iniciar ambos os serviços
+CMD ["sh", "-c", "uvicorn sigplac_ocr.main:app --host 0.0.0.0 --port 8000 & uvicorn sigplac_validate.composed:app --host 0.0.0.0 --port 5000"]
